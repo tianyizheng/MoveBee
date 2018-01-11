@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+            xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+
+        <title>MovBee</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+        <ui:define name="body">
+            <div class="container"> 
+            <div class="row"> 
+                <div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <div class="login-window">
+                        <div class="media">
+                            <img class="media-object logo" src="img/logo.png"></img>
+                        </div>
+                        <h2> Welcome to <span class="name-wrap"><span class="name-MB">M</span><span class="name">ov</span><span class="name-MB">B</span><span class="name">ee</span></span>.</h2>
+                        <h6 class="hidden-xs">a <b>Private Void</b> product that recommends movies for Georgia Tech students.</h6>
+                        <h:form class="clearfix">
+                            <div class="form-group">
+                                <h:inputText class="form-control" id="email" value="#{registration.email}" pt:required="true" pt:placeholder="Email"></h:inputText>
+                            </div>
+                            <div class="form-group">
+                                <h:inputSecret class="form-control" id="pass" value="#{registration.pass}" pt:required="true" pt:placeholder="Password"></h:inputSecret>
+                            </div>
+                            <ui:repeat value="#{facesContext.messageList}" var="facesMessage">
+                                <div class="alert" role="alert">
+                                    <span class="glyphicon" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span>
+                                    <span id="message">#{facesMessage.detail}</span>
+                                    <span id="severity" style="display: none">#{facesMessage.severity}</span>
+                                </div>
+                            </ui:repeat>
+                            <h:messages style="display: none"/>
+                            <h:commandButton id="loginButton" class="btn btn-default window-btn" value="Login" binding="#{registration.loginMessages}" action="#{registration.login}" />
+                            <div class="window-btn-reg">
+                                <h5 style="display:inline">Ready to MovBee?</h5>
+                                <h:button class="btn btn-default window-btn-ghost" value="Register Now." outcome="register"></h:button>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </ui:define>
+    </ui:composition>
+        
+    </h:body>
+</html>
+

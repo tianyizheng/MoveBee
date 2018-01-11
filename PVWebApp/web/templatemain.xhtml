@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        <h:head>
+        <!-- Latest compiled and minified CSS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+        <link rel="icon" type="image/png" href="img/favicon.ico"></link>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Kreon:400,700' rel='stylesheet' type='text/css'></link>
+        <link rel="stylesheet" href="site.css"></link>
+        
+        <script>
+            $(document).ready(function () {
+                switch ($('#severity').text()) {
+                    case 'ERROR 2':
+                        $('.alert').addClass('alert-danger');
+                        $('.alert .glyphicon').addClass('glyphicon-thumbs-down');
+                        break;
+                    case 'INFO 0':
+                        $('.alert').addClass('alert-info');
+                        $('.alert .glyphicon').addClass('glyphicon-thumbs-up');
+                        break;
+                    default:
+                }
+            });
+        </script>
+        <title>MovBee</title>
+    </h:head>
+    <h:body class="mainBody">
+
+    <div id="content" class="center_content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li style="margin-top:.75em;display:inline"> 
+                        <h:button class="btn btn-default window-btn-ghost brand-text hidden-xs" style="display:inline" value="MovBee" outcome="main"></h:button>
+                        <h:link outcome="main" style="display:inline" >
+                            <h:graphicImage value="img/logo.png" style="display:inline;border: none;height:2em;width:2em; margin-top: -.4em;" />
+                        </h:link>
+                    </li>
+                    <li style="margin-top:.75em;display:inline">
+                        <li class="hidden-lg hidden-md hidden-sm dropdown" style="display:inline">
+                            <h:form style="display:inline">
+                    
+                            <a href="#" style="color:#6f6f6f" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false"><h4 style="display:inline"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h4> <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                               <li><h:link value="Edit Profile" outcome="profile"></h:link></li>
+                                <li><h:link value="Admin" outcome="admin"></h:link></li>
+                                <li>
+                                    <div class="input-group" style="margin-top:.6em; width:250px">
+                                        <h:inputText class="form-control" id="Movie" value="#{search.searchInput}" ></h:inputText>
+                                        <span class="input-group-btn">
+                                            <h:commandButton id="searchButton" class="btn btn-default" value="Search" action="#{search.makeName()}" />
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h:commandButton type="submit" class="btn btn-default window-btn-ghost" value="Logout" binding="#{registration.loginMessages}" action="#{registration.logout}" />
+                                </li>
+                            </ul>
+                             </h:form>
+                        </li>
+                    </li>
+                    </ul>
+                    
+
+                <h:form class="hidden-xs">   
+                    <ul class="nav navbar-nav navbar-right">
+                           
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h4 style="display:inline"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h4> <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><h:link value="Edit Profile" outcome="profile"></h:link></li>
+                                <li><h:link value="Admin" outcome="admin"></h:link></li>
+                                <li class="divider"></li>
+                                <li><h:commandButton type="submit" class="btn btn-default window-btn-ghost" value="Logout" binding="#{registration.loginMessages}" action="#{registration.logout}" /></li>
+                            </ul>
+                        </li>
+                    </ul> 
+                     </h:form>
+                <h:form class="hidden-xs">
+                         <ul class="nav navbar-nav navbar-right">
+                             <div class="input-group" style="margin-top:.6em; width:250px">
+                                <h:inputText class="form-control" id="Movie" value="#{search.searchInput}" ></h:inputText>
+                                <span class="input-group-btn">
+                                    <h:commandButton id="searchButton" class="btn btn-default" value="Search" action="#{search.makeName()}" />
+                                </span>
+                             </div>
+                         </ul> 
+                </h:form>
+               
+
+            </div>
+        </nav>
+          <ui:insert name="body">
+            
+        </ui:insert>
+    </div>
+    </h:body>
+</html>
+

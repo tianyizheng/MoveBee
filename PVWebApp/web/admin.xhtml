@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:body>
+        <ui:composition template="./templatemain.xhtml">
+            <ui:define name="body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="container">
+                                <h3>Admin Dashboard</h3>
+                                <p>Lock or ban user accounts</p><br/> 
+                                
+                               
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Email</th>
+                                      <th>Status</th>
+                                      <th>Update</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      <c:forEach var="i" begin="0" end="#{adminHelper.getStudents(registration.current).size()-1}">
+                                          <h:form>
+                                          <tr>
+                                        <td>
+                                            #{adminHelper.getStudents(registration.current).get(i).getEmail()}
+                                        </td>
+                                        <td>
+                                     <h:selectOneMenu class="form-control" value="#{adminHelper.getStudents(registration.current).get(i).status}">
+                                        <f:selectItem itemValue="Active" itemLabel="Active"/>
+                                        <f:selectItem itemValue="Locked" itemLabel="Locked"/>
+                                        <f:selectItem itemValue="Banned" itemLabel="Banned"/>
+                                    </h:selectOneMenu>
+                                      </td> 
+                                      <td>
+                                                  
+                                        <h:commandButton type="submit" class="btn btn-default window-btn save-btn" style="margin-top:-.05em" value="Save" action="#{adminHelper.getStudents(registration.current).get(i).saveStudent}"/>
+                                           
+                                     </td>
+                                    </tr>
+                                          </h:form>
+                                      </c:forEach>
+                                       
+                                  </tbody>
+                                </table>
+                                
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

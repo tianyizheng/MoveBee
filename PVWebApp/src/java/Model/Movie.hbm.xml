@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="Model.Movie" optimistic-lock="version" schema="ADMINISTRATOR" table="MOVIES">
+    <id name="movieId">
+      <column name="MOVIEID"/>
+    </id>
+    <property name="title" type="string">
+      <column length="100" name="TITLE"/>
+    </property>
+    <property name="runtime" type="string">
+      <column length="20" name="RUNTIME"/>
+    </property>
+    <property name="releaseYear" type="integer">
+      <column length="50" name="RELEASEYEAR"/>
+    </property>
+    <property name="synopsis" type="string">
+      <column length="10000" name="SYNOPSIS"/>
+    </property>
+    <property name="mpaaRating" type="string">
+      <column length="50" name="MPAARATING"/>
+    </property>
+  </class>
+</hibernate-mapping>

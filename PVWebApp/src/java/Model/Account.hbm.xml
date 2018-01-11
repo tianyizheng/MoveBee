@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 21, 2015 10:41:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Account" optimistic-lock="version" schema="ADMINISTRATOR" table="ACCOUNTS">
+        <id name="email" type="string">
+            <column length="50" name="EMAIL"/>
+        </id>
+        <property name="username" type="string">
+            <column length="50" name="USERNAME" not-null="true"/>
+        </property>
+        <property name="pass" type="string">
+            <column length="50" name="PASS" not-null="true"/>
+        </property>
+        <joined-subclass name="Model.Student" extends="Model.Account" table="STUDENTS">
+            <key column="email"/>
+            <property name="status" type="string">
+                <column length="50" name="STATUS" not-null="true"/>
+            </property>
+            <one-to-one name="profile" class="Model.Profile" cascade="all"/>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

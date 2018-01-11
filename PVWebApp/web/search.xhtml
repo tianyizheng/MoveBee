@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"      
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Search
+        </title>
+    </h:head>
+    <h:body>
+           <ui:composition template="./templatemain.xhtml">
+               <ui:define name="body">
+                  <div class="container">
+                      <h3><h:outputText value="Results for : #{search.getSearchInput()}"></h:outputText> </h3>
+                     <c:forEach var="i" begin="0" end="#{search.movie.length()-1}">
+                         
+
+                         
+                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  #{search.movie.get(i).title}
+                                </a>
+                                </h4>
+                              </div>
+                              <div id="collapseOne" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                  <h:panelGrid columns="2" cellpadding="10">
+                                    <img src="#{search.movie.get(i).poster.thumbnail}" class="img-rounded-search" alt="Not Found" width="108" height="160"></img>
+                                    <h:form>
+                                        <h3><h:commandLink action="#{movieController.goTo(search.MList.get(i))}" value="#{search.movie.get(i).title}"/><br/></h3>
+                                        <h4 style="display:inline">Runtime: </h4>#{search.movie.get(i).runtime}<br/>
+                                        <h4 style="display:inline">Rating: </h4>#{search.movie.get(i).mpaaRating}<br/>
+                                        <h4 style="display:inline">Synopsis: </h4>#{search.movie.get(i).synopsis}<br/>
+                                        <br/>
+                                    </h:form>
+                                </h:panelGrid>
+                                </div>
+                              </div>
+                            </div>
+                         
+                          </div>
+                         
+                         
+                     </c:forEach>
+           
+                    </div>
+               </ui:define>
+            </ui:composition>
+        
+    </h:body>
+</html>

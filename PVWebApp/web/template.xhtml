@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        <h:head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+        <link rel="icon" type="image/png" href="img/favicon.ico"></link>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Kreon:400,700' rel='stylesheet' type='text/css'></link>
+        
+        <link rel="stylesheet" href="site.css"></link>
+        <script>
+            $(document).ready(function () {
+                switch ($('#severity').text()) {
+                    case 'ERROR 2':
+                        $('.alert').addClass('alert-danger');
+                        $('.alert .glyphicon').addClass('glyphicon-thumbs-down');
+                        break;
+                    case 'INFO 0':
+                        $('.alert').addClass('alert-info');
+                        $('.alert .glyphicon').addClass('glyphicon-thumbs-up');
+                        break;
+                    default:
+                }
+            });
+        </script>
+        <title>MovBee</title>
+    </h:head>
+    <h:body class="introBody">
+
+    <div id="top" class="top">
+        <ui:insert name="top"></ui:insert>
+    </div>
+
+    <div id="content" class="center_content">
+        
+        <ui:insert name="body"></ui:insert>
+    </div>
+
+    </h:body>
+</html>
+
